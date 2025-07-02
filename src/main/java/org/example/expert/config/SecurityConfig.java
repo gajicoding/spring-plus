@@ -32,7 +32,6 @@ public class SecurityConfig {
 
                 // 접근 제어
                 .authorizeHttpRequests(auth -> auth
-                        // 회원가입, 로그인은 인증 제외
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/error").permitAll()
