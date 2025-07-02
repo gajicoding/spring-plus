@@ -7,6 +7,7 @@ import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.todo.dto.request.TodoSaveRequest;
 import org.example.expert.domain.todo.dto.response.TodoResponse;
 import org.example.expert.domain.todo.dto.response.TodoSaveResponse;
+import org.example.expert.domain.todo.dto.response.TodoSearchResponse;
 import org.example.expert.domain.todo.entity.Todo;
 import org.example.expert.domain.todo.repository.QTodoRepository;
 import org.example.expert.domain.todo.repository.TodoRepository;
@@ -76,6 +77,16 @@ public class TodoService {
                 todo.getCreatedAt(),
                 todo.getModifiedAt()
         ));
+    }
+
+    public Page<TodoSearchResponse> searchTodos(int page, int size, String title, String manager, LocalDate startDate, LocalDate endDate) {
+
+        LocalDateTime startDateTime = startDate != null ? startDate.atStartOfDay() : null;
+        LocalDateTime endDateTime = endDate != null ? endDate.atTime(LocalTime.MAX) : null;
+
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        return qTodoRepository.searchTodos(title, manager, startDateTime, endDateTime, pageable);
     }
 
     @Transactional(readOnly = true)
