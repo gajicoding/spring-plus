@@ -63,4 +63,20 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+    public Long getUserId(Claims claims) {
+        return Long.parseLong(claims.getSubject());
+    }
+
+    public String getEmail(Claims claims) {
+        return claims.get("email", String.class);
+    }
+
+    public String getNickname(Claims claims) {
+        return claims.get("nickname", String.class);
+    }
+
+    public UserRole getUserRole(Claims claims) {
+        return UserRole.valueOf(claims.get("userRole", String.class));
+    }
 }

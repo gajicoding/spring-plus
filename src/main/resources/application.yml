@@ -2,6 +2,10 @@ spring:
   application:
     name: expert
 
+  jpa:
+    show-sql: true
+    open-in-view: false
+
 server:
   error:
     include-message: always
@@ -9,6 +13,7 @@ server:
 jwt:
   secret:
     key: ${SECRET_KEY}
+
 
 
 #logging:
