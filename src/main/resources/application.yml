@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: expert
+
+server:
+  error:
+    include-message: always
+
+jwt:
+  secret:
+    key: ${SECRET_KEY}
+
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: trace
