@@ -64,7 +64,7 @@ public class ManagerService {
 
             return new ManagerSaveResponse(
                     savedManagerUser.getId(),
-                    new UserResponse(managerUser.getId(), managerUser.getEmail())
+                    new UserResponse(managerUser)
             );
         } catch (Exception e) {
             logService.saveLog(authUser.getId(), ActionType.REGISTER_MANAGER_FAIL, todoId, managerSaveRequest.getManagerUserId());
@@ -83,7 +83,7 @@ public class ManagerService {
             User user = manager.getUser();
             dtoList.add(new ManagerResponse(
                     manager.getId(),
-                    new UserResponse(user.getId(), user.getEmail())
+                    new UserResponse(user)
             ));
         }
         return dtoList;
