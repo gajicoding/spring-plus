@@ -1,6 +1,7 @@
 # 플러스 주차 개인 과제
 
 
+
 ## AWS 인프라 구성 요약
 
 ### EC2
@@ -29,4 +30,32 @@
 
 ![img.png](images/s3.png)
 
+<br>
+<br>
+
+## 대용량 데이터 처리
+- 데이터 준비
+
+![img.png](images/insertUsers.png)
+
+<br>
+
+- 개선 전
+
+![img.png](images/beforeAPI.png)
+![img.png](images/beforeQuery.png)
+
+<br>
+
+- INDEX 적용
+
+![img.png](images/indexAPI.png)
+![img.png](images/indexQuery.png)
+
+<br>
+
+- Projection 적용
+
+![img.png](img.png)
+![img.png](images/projectionQuery.png)
 
