@@ -26,7 +26,7 @@ public class JwtUtil {
     @Value("${jwt.secret.key}")
     private String secretKey;
     private Key key;
-    private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+    private static final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
     @PostConstruct
     public void init() {
@@ -34,13 +34,14 @@ public class JwtUtil {
         key = Keys.hmacShaKeyFor(bytes);
     }
 
-    public String createToken(Long userId, String email, UserRole userRole) {
+    public String createToken(Long userId, String email, String nickname, UserRole userRole) {
         Date date = new Date();
 
         return BEARER_PREFIX +
                 Jwts.builder()
                         .setSubject(String.valueOf(userId))
                         .claim("email", email)
+                        .claim("nickname", nickname)
                         .claim("userRole", userRole)
                         .setExpiration(new Date(date.getTime() + TOKEN_TIME))
                         .setIssuedAt(date) // 발급일
@@ -61,5 +62,21 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public Long getUserId(Claims claims) {
+        return Long.parseLong(claims.getSubject());
+    }
+
+    public String getEmail(Claims claims) {
+        return claims.get("email", String.class);
+    }
+
+    public String getNickname(Claims claims) {
+        return claims.get("nickname", String.class);
+    }
+
+    public UserRole getUserRole(Claims claims) {
+        return UserRole.valueOf(claims.get("userRole", String.class));
     }
 }
