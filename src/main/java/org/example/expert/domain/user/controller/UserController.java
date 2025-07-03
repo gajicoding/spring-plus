@@ -10,6 +10,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -27,6 +29,13 @@ public class UserController {
             @RequestBody UserChangePasswordRequest userChangePasswordRequest
     ) {
         userService.changePassword(authUser.getId(), userChangePasswordRequest);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserResponse>> findUsersByNickname(
+            @RequestParam(defaultValue = "") String nickname
+    ) {
+        return ResponseEntity.ok(userService.findUsersByNickname(nickname));
     }
 
     @PatchMapping("/users/profile-image")
