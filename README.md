@@ -1,5 +1,18 @@
 # 플러스 주차 개인 과제
 
+## 대용량 데이터 처리
+- 데이터 준비
+![img.png](images/insertUsers.png)
+
+- 개선 전
+![img.png](images/beforeAPI.png)
+![img.png](images/beforeQuery.png)
+
+- 인덱스 적용
+![img.png](images/indexAPI.png)
+![img.png](images/indexQuery.png)
+
+- 
 
 ## AWS 인프라 구성 요약
 
