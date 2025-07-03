@@ -6,7 +6,7 @@
 ### EC2
 - 탄력적 IP: `3.34.211.143`
 - 보안 그룹: `8080`, `22`, `80`, `443` 허용
-- [✔️] health check API: `http://3.34.211.143:8080/health`
+- [✔️] health check API: [http://3.34.211.143:8080/health](http://3.34.211.143:8080/health)
 
 ![img.png](images/ec2.png)
 ![img.png](images/eip.png)
