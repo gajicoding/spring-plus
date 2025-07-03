@@ -9,6 +9,7 @@ import org.example.expert.domain.common.service.S3Service;
 import org.example.expert.domain.user.dto.request.UserChangePasswordRequest;
 import org.example.expert.domain.user.dto.response.UserResponse;
 import org.example.expert.domain.user.entity.User;
+import org.example.expert.domain.user.repository.QUserRepository;
 import org.example.expert.domain.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final QUserRepository qUserRepository;
     private final PasswordEncoder passwordEncoder;
     private final S3Service s3Service;
 
@@ -49,8 +51,8 @@ public class UserService {
         user.changePassword(passwordEncoder.encode(userChangePasswordRequest.getNewPassword()));
     }
 
-    public List<UserResponse> findUsersByNickname(String nickname) {
-        return userRepository.findByNickname(nickname).stream().map(UserResponse::new).toList();
+    public List<String> findUsersByNickname(String nickname) {
+        return qUserRepository.findByNickname(nickname);
     }
 
     @Transactional

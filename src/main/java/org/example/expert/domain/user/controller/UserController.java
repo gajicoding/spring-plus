@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserResponse>> findUsersByNickname(
+    public ResponseEntity<List<String>> findUsersByNickname(
             @RequestParam(defaultValue = "") String nickname
     ) {
         return ResponseEntity.ok(userService.findUsersByNickname(nickname));
