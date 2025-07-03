@@ -8,6 +8,7 @@ import org.example.expert.domain.user.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,5 +27,13 @@ public class UserController {
             @RequestBody UserChangePasswordRequest userChangePasswordRequest
     ) {
         userService.changePassword(authUser.getId(), userChangePasswordRequest);
+    }
+
+    @PatchMapping("/users/profile-image")
+    public ResponseEntity<UserResponse> saveProfileImage(
+            @AuthenticationPrincipal AuthUser authUser,
+            @RequestParam("file") MultipartFile file
+    ) {
+        return ResponseEntity.ok(userService.saveProfileImage(authUser.getId(), file));
     }
 }
