@@ -2,9 +2,26 @@ spring:
   application:
     name: expert
 
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
   jpa:
     show-sql: true
     open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+  cloud:
+    aws:
+      credentials:
+        access-key: ${IAM_ACCESS_KEY}
+        secret-key: ${IAM_SECRET_KEY}
+      region:
+        static: ${AWS_BUCKET_REGION}
+      s3:
+        bucket: ${AWS_BUCKET_NAME}
 
 server:
   error:

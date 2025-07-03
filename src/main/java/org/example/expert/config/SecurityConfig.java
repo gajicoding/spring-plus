@@ -2,6 +2,7 @@ package org.example.expert.config;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.example.expert.domain.user.enums.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -32,9 +33,9 @@ public class SecurityConfig {
 
                 // 접근 제어
                 .authorizeHttpRequests(auth -> auth
-                        // 회원가입, 로그인은 인증 제외
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole(UserRole.ADMIN.name())
+                        .requestMatchers("/health").permitAll()
                         .requestMatchers("/error").permitAll()
 
                         .anyRequest().authenticated()
