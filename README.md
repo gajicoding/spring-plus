@@ -37,6 +37,29 @@
 
 <br>
 
+## 빌드 과정
+### 코드 복제
+```json
+git clone https://github.com/gajicoding/spring-plus.git
+cd spring-plus
+```
+
+### 빌드 (윈도우)
+```bash
+./gradlew build
+```
+
+### 실행 (윈도우)
+```bash
+java -jar .\build\libs\expert-0.0.1-SNAPSHOT.jar
+```
+
+<details>
+<summary>환경 변수 설정</summary>
+
+[Feeda 프로젝트 환경 변수](https://www.notion.so/Feed-a-208bfc0be30d8043a8b3e2f548012b9a?source=copy_link)
+</details>
+
 ## AWS 인프라 구성 요약
 
 ### EC2
@@ -97,5 +120,13 @@
 ![img.png](images/projectionQuery.png)
 ![img.png](ProjectionExplain.png)
 
+<br>
 
-🔍 새로운 지식
+## 🔍 새로운 지식
+- [Index Lookup vs Covering Index Lookup](https://gajicoding.tistory.com/395)
+- [EXPLAIN ANALYZE 활용법](https://gajicoding.tistory.com/396)
+
+<br>
+
+## 🧰 문제 해결 (트러블 슈팅)
+- [Windows에서 EC2 SSH 접속 시 WARNING: UNPROTECTED PRIVATE KEY FILE! 오류 해결](https://gajicoding.tistory.com/392)
