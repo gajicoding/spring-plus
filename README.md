@@ -44,6 +44,7 @@
 
 ![img.png](images/beforeAPI.png)
 ![img.png](images/beforeQuery.png)
+![img_1.png](images/beforeExplain.png)
 
 <br>
 
@@ -51,11 +52,12 @@
 
 ![img.png](images/indexAPI.png)
 ![img.png](images/indexQuery.png)
+![img.png](indexExplain.png)
 
 <br>
 
-- Projection 적용
+- Projection 최적화 + Covering Index 사용
 
-![img.png](img.png)
+![img.png](images/projectionAPI.png)
 ![img.png](images/projectionQuery.png)
-
+![img.png](ProjectionExplain.png)
